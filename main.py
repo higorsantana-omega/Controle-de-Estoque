@@ -71,6 +71,8 @@ class Application:
         self.lblesto_inicial = Label(root, text='Estoque inicial')
         self.lblesto_inicial.grid(row=4, column=1)
 
+        self.listProdutos = Listbox(root)
+
     def entrys(self):
         self.entryProduct = Entry(root, textvariable=self.product)
         self.entryProduct.grid(row=1, column=0, padx=20, pady=10)
@@ -114,6 +116,7 @@ class Application:
         self.entryEstoInicial = Entry(root, textvariable=self.estoque_inicial)
         self.entryEstoInicial.grid(row=5, column=1, padx=20, pady=10)
 
+        self.listProdutos.grid(row=6, column=0, rowspan=10)
 
         
 Application(root)
