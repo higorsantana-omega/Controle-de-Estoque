@@ -1,5 +1,5 @@
 from tkinter import *
-import adicionar
+# from adicionar import new_window
 
 root = Tk()
 
@@ -9,8 +9,6 @@ class Application:
         self.window()
         self.frames()
         self.buttons()
-        # self.labels()
-        # self.entrys()
         root.mainloop()
 
     def window(self):
@@ -28,7 +26,7 @@ class Application:
         self.listbox_.grid(row=2, column=0)
 
     def buttons(self):
-        self.adicionar = Button(self.botoes, text='Adicionar', width=12, height=2, command=adicionar)
+        self.adicionar = Button(self.botoes, text='Adicionar', width=12, height=2, command=self.new_window)
         self.adicionar.place(x=10, y=5)
 
         self.importar = Button(self.botoes, text='Importar', width=12, height=2)
@@ -45,115 +43,110 @@ class Application:
         self.listProdutos.configure(yscrollcommand=self.scrollProdutos.set)
         self.scrollProdutos.configure(command=self.listProdutos.yview)
 
-    # def labels(self):
-    #     self.product = ''
-    #     self.marca = ''
-    #     self.loc_estoque = ''
-    #     self.estoque_min = ''
-    #     self.estoque_max = ''
-    #     self.peso_kg = ''
-    #     self.valor_venda = ''
-    #     self.valor_custo = ''
-    #     self.tamanho_produto = ''
-    #     self.origem = ''
-    #     self.situação = ''
-    #     self.tipo = ''
-    #     self.fornecedor = ''
-    #     self.estoque_inicial = ''
+    def new_window(self):
+        Newwindow = Toplevel(self.root)
+        Newwindow.geometry("600x350")
 
-    #     self.lblProduct = Label(root, text='Produto')
-    #     self.lblProduct.grid(row=0, column=0)
+        product = ''
+        marca = ''
+        loc_estoque = ''
+        estoque_min = ''
+        estoque_max = ''
+        peso_kg = ''
+        valor_venda = ''
+        valor_custo = ''
+        tamanho_produto = ''
+        origem = ''
+        situação = ''
+        tipo = ''
+        fornecedor = ''
+        estoque_inicial = ''
 
-    #     self.lblmarca = Label(root, text='Marca')
-    #     self.lblmarca.grid(row=0, column=1)
+        lblProduct = Label(Newwindow, text='Produto')
+        lblProduct.grid(row=0, column=0)
 
-    #     self.lblLocalest = Label(root, text='Local no Estoque')
-    #     self.lblLocalest.grid(row=0, column=2)
+        lblmarca = Label(Newwindow, text='Marca')
+        lblmarca.grid(row=0, column=1)
 
-    #     self.lblestoquemin = Label(root, text='Estoque minímo')
-    #     self.lblestoquemin.grid(row=0, column=3)
+        lblLocalest = Label(Newwindow, text='Local no Estoque')
+        lblLocalest.grid(row=0, column=2)
 
-    #     self.lblestoquemax = Label(root, text='Estoque maxímo')
-    #     self.lblestoquemax.grid(row=0, column=4)
+        lblestoquemin = Label(Newwindow, text='Estoque minímo')
+        lblestoquemin.grid(row=0, column=3)
 
-    #     self.lblPeso = Label(root, text='Peso (Kg)')
-    #     self.lblPeso.grid(row=0, column=5)
+        lblestoquemax = Label(Newwindow, text='Estoque maxímo')
+        lblestoquemax.grid(row=0, column=4)
 
-    #     self.lblv_venda = Label(root, text='Valor de venda')
-    #     self.lblv_venda.grid(row=2, column=0)
+        lblPeso = Label(Newwindow, text='Peso (Kg)')
+        lblPeso.grid(row=0, column=5)
 
-    #     self.lblv_custo = Label(root, text='Valor de custo')
-    #     self.lblv_custo.grid(row=2, column=1)
+        lblv_venda = Label(Newwindow, text='Valor de venda')
+        lblv_venda.grid(row=2, column=0)
 
-    #     self.lbltam_produto = Label(root, text='Tamanho do produto')
-    #     self.lbltam_produto.grid(row=2, column=2)
+        lblv_custo = Label(Newwindow, text='Valor de custo')
+        lblv_custo.grid(row=2, column=1)
 
-    #     self.lblorigem = Label(root, text='Origem')
-    #     self.lblorigem.grid(row=2, column=3)
+        lbltam_produto = Label(Newwindow, text='Tamanho do produto')
+        lbltam_produto.grid(row=2, column=2)
 
-    #     self.lblsituacao = Label(root, text='Situação')
-    #     self.lblsituacao.grid(row=2, column=4)
+        lblorigem = Label(Newwindow, text='Origem')
+        lblorigem.grid(row=2, column=3)
 
-    #     self.lbltipo = Label(root, text='Tipo')
-    #     self.lbltipo.grid(row=2, column=5)
+        lblsituacao = Label(Newwindow, text='Situação')
+        lblsituacao.grid(row=2, column=4)
 
-    #     self.lblfornecedor = Label(root, text='Fornecedor')
-    #     self.lblfornecedor.grid(row=4, column=0)
+        lbltipo = Label(Newwindow, text='Tipo')
+        lbltipo.grid(row=2, column=5)
 
-    #     self.lblesto_inicial = Label(root, text='Estoque inicial')
-    #     self.lblesto_inicial.grid(row=4, column=1)
+        lblfornecedor = Label(Newwindow, text='Fornecedor')
+        lblfornecedor.grid(row=4, column=0)
 
-    #     self.listProdutos = Listbox(root)
-    #     self.scrollProdutos = Scrollbar(root)
+        lblesto_inicial = Label(Newwindow, text='Estoque inicial')
+        lblesto_inicial.grid(row=4, column=1)
 
-    # def entrys(self):
-    #     self.entryProduct = Entry(root, textvariable=self.product)
-    #     self.entryProduct.grid(row=1, column=0, padx=20, pady=10)
+        listProdutos = Listbox(Newwindow)
+        scrollProdutos = Scrollbar(Newwindow)
 
-    #     self.entryMarca = Entry(root, textvariable=self.marca)
-    #     self.entryMarca.grid(row=1, column=1, padx=20, pady=10)
+        entryProduct = Entry(Newwindow, textvariable=product)
+        entryProduct.grid(row=1, column=0, padx=20, pady=10)
 
-    #     self.entrylocalEstoque = Entry(root, textvariable=self.loc_estoque)
-    #     self.entrylocalEstoque.grid(row=1, column=2, padx=20, pady=10)
+        entryMarca = Entry(Newwindow, textvariable=marca)
+        entryMarca.grid(row=1, column=1, padx=20, pady=10)
 
-    #     self.entryestoqueMin = Entry(root, textvariable=self.estoque_min)
-    #     self.entryestoqueMin.grid(row=1, column=3, padx=20, pady=10)
+        entrylocalEstoque = Entry(Newwindow, textvariable=loc_estoque)
+        entrylocalEstoque.grid(row=1, column=2, padx=20, pady=10)
 
-    #     self.entryestoque_max = Entry(root, textvariable=self.estoque_max)
-    #     self.entryestoque_max.grid(row=1, column=4, padx=20, pady=10)
+        entryestoqueMin = Entry(Newwindow, textvariable=estoque_min)
+        entryestoqueMin.grid(row=1, column=3, padx=20, pady=10)
 
-    #     self.entryPeso = Entry(root, textvariable=self.peso_kg)
-    #     self.entryPeso.grid(row=1, column=5, padx=20, pady=10)
+        entryestoque_max = Entry(Newwindow, textvariable=estoque_max)
+        entryestoque_max.grid(row=1, column=4, padx=20, pady=10)
 
-    #     self.entryv_venda = Entry(root, textvariable=self.valor_venda)
-    #     self.entryv_venda.grid(row=3, column=0, padx=20, pady=10)
+        entryPeso = Entry(Newwindow, textvariable=peso_kg)
+        entryPeso.grid(row=1, column=5, padx=20, pady=10)
 
-    #     self.entryv_custo = Entry(root, textvariable=self.valor_custo)
-    #     self.entryv_custo.grid(row=3, column=1, padx=20, pady=10)
+        entryv_venda = Entry(Newwindow, textvariable=valor_venda)
+        entryv_venda.grid(row=3, column=0, padx=20, pady=10)
 
-    #     self.entrytam_produto = Entry(root, textvariable=self.tamanho_produto)
-    #     self.entrytam_produto.grid(row=3, column=2, padx=20, pady=10)
+        entryv_custo = Entry(Newwindow, textvariable=valor_custo)
+        entryv_custo.grid(row=3, column=1, padx=20, pady=10)
 
-    #     self.entryorigem = Entry(root, textvariable=self.origem)
-    #     self.entryorigem.grid(row=3, column=3, padx=20, pady=10)
+        entrytam_produto = Entry(Newwindow, textvariable=tamanho_produto)
+        entrytam_produto.grid(row=3, column=2, padx=20, pady=10)
 
-    #     self.entrySituacao = Entry(root, textvariable=self.situação)
-    #     self.entrySituacao.grid(row=3, column=4, padx=20, pady=10)
+        entryorigem = Entry(Newwindow, textvariable=origem)
+        entryorigem.grid(row=3, column=3, padx=20, pady=10)
 
-    #     self.entryTipo = Entry(root, textvariable=self.tipo)
-    #     self.entryTipo.grid(row=3, column=5, padx=20, pady=10)
+        entrySituacao = Entry(Newwindow, textvariable=situação)
+        entrySituacao.grid(row=3, column=4, padx=20, pady=10)
 
-    #     self.entryFornecedor = Entry(root, textvariable=self.fornecedor)
-    #     self.entryFornecedor.grid(row=5, column=0, padx=20, pady=10)
+        entryTipo = Entry(Newwindow, textvariable=tipo)
+        entryTipo.grid(row=3, column=5, padx=20, pady=10)
 
-    #     self.entryEstoInicial = Entry(root, textvariable=self.estoque_inicial)
-    #     self.entryEstoInicial.grid(row=5, column=1, padx=20, pady=10)
+        entryFornecedor = Entry(Newwindow, textvariable=fornecedor)
+        entryFornecedor.grid(row=5, column=0, padx=20, pady=10)
 
-    #     self.listProdutos.grid(row=6, column=0, rowspan=10)
-    #     self.scrollProdutos.grid(row=6, column=1, rowspan=10)
-
-    #     self.listProdutos.configure(yscrollcommand=self.scrollProdutos.set)
-    #     self.scrollProdutos.configure(command=self.listProdutos.yview)
-
+        entryEstoInicial = Entry(Newwindow, textvariable=estoque_inicial)
+        entryEstoInicial.grid(row=5, column=1, padx=20, pady=10)
         
 Application(root)
