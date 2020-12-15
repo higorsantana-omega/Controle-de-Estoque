@@ -8,14 +8,38 @@ class Banco():
     cursor = None
     connected = False
 
+    # conecta com o banco de dados
     def connect(self):
         Banco.conn = sql.connect(Banco.database)
         Banco.cursor = Banco.conn.cursor()
         Banco.connected = True
 
+    # desconecta o banco de dados
     def disconnect(self):
         Banco.conn.close()
         Banco.connected = False
+
+    # executar comando no banco de dados
+    def execute(self, sql, params = None):
+        if Banco.connected:
+            if params == None:
+                Banco.cursor.execute(sql)
+            else:
+                Banco.cursor.execute(sql, params)
+            return True
+        else:
+            return False
+        
+    # valores recebidos
+    def fetchall(self):
+        return Banco.cursor.fetchall()
+    
+    def persist(self):
+        if Banco.connected:
+            Banco.cursor.commit()
+            return True
+        else:
+            return False
     # cursor.execute('CREATE TABLE IF NOT EXISTS produto(
     #     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     #     nome_produto VARCHAR(50) NOT NULL,
