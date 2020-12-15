@@ -12,6 +12,10 @@ class Banco():
         Banco.conn = sql.connect(Banco.database)
         Banco.cursor = Banco.conn.cursor()
         Banco.connected = True
+
+    def disconnect(self):
+        Banco.conn.close()
+        Banco.connected = False
     # cursor.execute('CREATE TABLE IF NOT EXISTS produto(
     #     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     #     nome_produto VARCHAR(50) NOT NULL,
