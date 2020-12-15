@@ -1,4 +1,5 @@
 import sqlite3
+from sqlite3 import sql
 
 
 class Banco():
@@ -7,6 +8,10 @@ class Banco():
     cursor = None
     connected = False
 
+    def connect(self):
+        Banco.conn = sql.connect(Banco.database)
+        Banco.cursor = Banco.conn.cursor()
+        Banco.connected = True
     # cursor.execute('CREATE TABLE IF NOT EXISTS produto(
     #     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     #     nome_produto VARCHAR(50) NOT NULL,
