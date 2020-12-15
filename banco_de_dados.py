@@ -1,5 +1,5 @@
 import sqlite3
-from sqlite3 import sql
+# from sqlite3 import sql
 
 
 class Banco():
@@ -10,7 +10,7 @@ class Banco():
 
     # conecta com o banco de dados
     def connect(self):
-        Banco.conn = sql.connect(Banco.database)
+        Banco.conn = sqlite3.connect(Banco.database)
         Banco.cursor = Banco.conn.cursor()
         Banco.connected = True
 
@@ -42,29 +42,29 @@ class Banco():
         else:
             return False
 
-    # Criar db
+# Criar db
 def InitDB():
     trans = Banco()
     trans.connect() 
-    trans.execute('CREATE TABLE IF NOT EXISTS produto(
-        id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-        nome_produto VARCHAR(50) NOT NULL,
-        marca VARCHAR(20),
-        unidade VARCHAR(10),
-        localizao_estoque VARCHAR(30),
-        estoque_minimo INTEGER,
-        estoque_maximo INTEGER,
-        peso_kg REAL,
-        valor_venda REAL,
-        valor_custO REAL,
-        tamanho_produto INTEGER,
-        origem VARCHAR(40),
-        classificao VARCHAR(40),
-        situacao VARCHAR(10),
-        tipo VARCHAR(10),
-        fornecedor VARCHAR(30),
-        estoque_inicial INTEGER,
-    )')
+    trans.execute("""CREATE TABLE IF NOT EXISTS produto(
+            id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+            nome_produto VARCHAR(50) NOT NULL,
+            marca VARCHAR(20),
+            unidade VARCHAR(10),
+            localizao_estoque VARCHAR(30),
+            estoque_minimo INTEGER,
+            estoque_maximo INTEGER,
+            peso_kg REAL,
+            valor_venda REAL,
+            valor_custo REAL,
+            tamanho_produto INTEGER,
+            origem VARCHAR(40),
+            classificao VARCHAR(40),
+            situacao VARCHAR(10),
+            tipo VARCHAR(10),
+            fornecedor VARCHAR(30),
+            estoque_inicial INTEGER
+        )""")
     trans.persist()
     trans.disconnect()
 
@@ -80,4 +80,17 @@ def view():
     rows = trans.fetchall()
     trans.disconnect()
     return rows
+
+# Inserir dados 
+def insert(nome_produto, marca, unidade, localizao_estoque, estoque_minimo, estoque_maximo, peso_kg,
+            valor_venda, valor_custo, tamanho_produto, origem, classificao, situacao, tipo, fornecedor, estoque_inicial):
+    trans = Banco()
+    trans.connect()
+    trans.execute("INSERT INTO produto VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,? ,? ,?)", 
+                (nome_produto, marca, unidade, localizao_estoque, estoque_minimo, estoque_maximo, peso_kg,
+                valor_venda, valor_custo, tamanho_produto, origem, 
+                classificao, situacao, tipo, fornecedor, estoque_inicial
+                ))
+    trans.persist()
+    trans.disconnect()
 
