@@ -26,7 +26,3 @@ def destroy_window():
 if __name__ == '__main__':
     import novo_produto
     novo_produto.vp_start_gui()
-
-
-
-
