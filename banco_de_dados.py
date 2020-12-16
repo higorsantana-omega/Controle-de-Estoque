@@ -37,7 +37,7 @@ class Banco():
     # commit
     def persist(self):
         if Banco.connected:
-            Banco.cursor.commit()
+            Banco.conn.commit()
             return True
         else:
             return False
